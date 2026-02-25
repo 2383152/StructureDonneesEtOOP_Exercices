@@ -25,6 +25,7 @@
              Console.WriteLine(resultat);//va afficher: chat- chien- oiseau
             */
 
+
         }
     }
 }
