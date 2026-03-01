@@ -17,6 +17,8 @@ namespace Exercice3
             this.NbSecondes = nbSecondes;
         }
 
+
+
         //Méthode pour changer la couleur
         public string ChangerCouleurRouge()
         {
@@ -33,21 +35,38 @@ namespace Exercice3
             return Couleur = "vert";
         }
 
+        //Corrigé:
+        public void ChangerCouleur(string NouvelleCouleur)
+        {
+            Couleur = NouvelleCouleur;
+        }
+
         //Méthode pour vérifier la couleur du feux
         public bool EstCouleurVerte()
         {
-            if (Couleur == "vert")
-                return true;
-            else
-                return false;
+            /* if (Couleur == "vert")
+                 return true;
+             else
+                 return false;
+            */
+
+            //Corrigé: condition avec le return
+            return Couleur == "vert";
         }
 
         public bool EstCouleurRouge()
         {
+            /*
             if (Couleur == "rouge")
                 return true;
             else
                 return false;
+            */
+
+            //Corrigé: condition avec le return
+            return Couleur == "rouge";
         }
+
+
     }
 }
