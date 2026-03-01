@@ -40,7 +40,8 @@ namespace Exercice01
         //Surcharge de l'opérateur + 
         public void Sum(Complex nombre)
         {
-            a += nombre.GetA;
+            a += nombre.GetA();
+            b += nombre.GetB();
         }
     }
 }
