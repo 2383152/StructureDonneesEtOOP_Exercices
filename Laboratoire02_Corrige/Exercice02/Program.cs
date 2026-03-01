@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             Employee employee01 = new Employee("dave", 20.25, new DateTime(2000, 08, 02));
-            employee01.AfficherValeur();
+            Console.WriteLine(employee01.AfficherValeur());
         }
     }
 }
