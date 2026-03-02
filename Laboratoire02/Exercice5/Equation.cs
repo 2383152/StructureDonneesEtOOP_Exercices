@@ -22,6 +22,7 @@ namespace Exercice5
         public void CalculerDiscriminant()
         {
 
+
         }
     }
 }
