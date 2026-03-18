@@ -14,6 +14,8 @@
             Ville v3 = new Ville("Vancouver", coordV3, 1000000);
             Pays p1 = new Pays("Canada", "Ottawa", v1, v2, v3);
 
+            p1.AfficherInfo();
+
         }
     }
 }

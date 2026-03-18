@@ -20,8 +20,8 @@ namespace Exercice6
         public Ville(string nom, double Longitude, double Latitude, int population)
         {
             this.Nom = nom;
-            this.Coord.Longitude = Longitude;
-            this.Coord.Latitude = Latitude;
+            //this.Coord.Longitude = Longitude;
+            //this.Coord.Latitude = Latitude;
             this.Population = population;
         }
 

@@ -35,11 +35,11 @@ namespace Exercice6
         public void AfficherInfo()
         {
             Console.WriteLine("Nom: " + Nom);
-            Console.WriteLine("Capital: " + Capital);
+            Console.WriteLine($"Capital: {Capital.AfficherInformation()}");
 
             foreach(Ville ville in TabVille)
             {
-                Console.WriteLine("Ville:" + ville);
+                Console.WriteLine("Ville:" + ville.Nom);
             }
         }
 
