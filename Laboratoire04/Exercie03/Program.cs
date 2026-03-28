@@ -12,6 +12,7 @@
             Console.WriteLine();
 
             rectangle.AfficherEtat();
+
         }
     }
 }
