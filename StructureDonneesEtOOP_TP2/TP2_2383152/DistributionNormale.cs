@@ -36,5 +36,17 @@ namespace TP2_2383152
                 echantillon.Add(valeur);
             }
         }
+
+        public override double CalculerMoyenneTheorique()
+        {
+            return MoyenneTheorique;
+        }
+
+        public override double CalculerVarianceTheorique()
+        {
+            double varianceTheorique = EcartType * EcartType;
+
+            return varianceTheorique;
+        }
     }
 }

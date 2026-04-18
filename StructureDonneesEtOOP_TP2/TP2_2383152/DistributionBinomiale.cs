@@ -37,5 +37,19 @@ namespace TP2_2383152
                 echantillon.Add(succes);
             }
         }
+
+        public override double CalculerMoyenneTheorique()
+        {
+            double moyenne = n * p;
+
+            return moyenne;
+        }
+
+        public override double CalculerVarianceTheorique()
+        {
+            double variance = echantillon.Count * p * (p - 1);
+
+            return variance;
+        }
     }
 }

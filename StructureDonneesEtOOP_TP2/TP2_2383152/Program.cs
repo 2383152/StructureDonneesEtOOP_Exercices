@@ -1,4 +1,5 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TP2_2383152
 {
@@ -7,11 +8,17 @@ namespace TP2_2383152
         static void Main(string[] args)
         {
 
-            int choixNombre = 0;
+            int choixNombre = -1;
             char choixLettre = ' ';
+
+            string nomFichier = " ";
+            List<string> fichiersSauvegarder = new List<string>();
+            Distribution distributionNormale = new DistributionNormale(-1, -1, -1 );
+            Distribution distributionBinomiale = new DistributionBinomiale(-1, -1, -1);
 
             while (choixNombre != 4)
             {
+                Console.WriteLine();
                 Console.WriteLine("Simulateur de Distributions Statistiques!");
                 Console.WriteLine("*****************************************");
                 Console.WriteLine("Option 1- Générer un échantillion");
@@ -29,6 +36,7 @@ namespace TP2_2383152
 
                         while (choixLettre != 'M')
                         {
+                            Console.WriteLine();
                             Console.WriteLine("Génération de l'échantillion");
                             Console.WriteLine("****************************");
                             Console.WriteLine("N- Distribution Normale");
@@ -54,10 +62,14 @@ namespace TP2_2383152
                                     estValeurValide = double.TryParse(Console.ReadLine(), out double ecartType);
 
                                     //Calculer, afficher et sauvegarder
-                                    Distribution distribution1 = new DistributionNormale(tailleEchantillion, moyenneTheorique, ecartType);
-                                    distribution1.CalculerDistribution();
-                                    distribution1.AfficherEchantillion();
-                                    //distribution1.SauvegarderFichier("to be confirmed...");
+                                    distributionNormale = new DistributionNormale(tailleEchantillion, moyenneTheorique, ecartType);
+
+                                    distributionNormale.CalculerDistribution();
+                                    distributionNormale.AfficherEchantillon();
+
+                                    nomFichier = "DistributionNormale.csv";
+                                    fichiersSauvegarder.Add(nomFichier);
+                                    distributionNormale.SauvegarderFichier(nomFichier);
 
 
                                     break;
@@ -75,10 +87,14 @@ namespace TP2_2383152
                                     estValeurValide = double.TryParse(Console.ReadLine(), out double probabiliteSucces);
 
                                     //Calculer, afficher et sauvegarder
-                                    Distribution distribution2 = new DistributionBinomiale(tailleEchantillion, nbTotalEssais, probabiliteSucces);
-                                    distribution2.CalculerDistribution();
-                                    distribution2.AfficherEchantillion();
-                                    //distribution2.SauvegarderFichier("to be confirmed...");
+                                    distributionBinomiale = new DistributionBinomiale(tailleEchantillion, nbTotalEssais, probabiliteSucces);
+
+                                    distributionBinomiale.CalculerDistribution();
+                                    distributionBinomiale.AfficherEchantillon();
+
+                                    nomFichier = "DistributionBinomiale.csv";
+                                    fichiersSauvegarder.Add(nomFichier);
+                                    distributionBinomiale.SauvegarderFichier(nomFichier);
 
                                     break;
                             }                               
@@ -90,7 +106,8 @@ namespace TP2_2383152
 
                         while (choixLettre != 'M')
                         {
-                            Console.WriteLine("Génération de l'échantillion");
+                            Console.WriteLine();
+                            Console.WriteLine("Afficher les statistiques");
                             Console.WriteLine("****************************");
                             Console.WriteLine("N- Distribution Normale");
                             Console.WriteLine("B- Distribution Binomiale");
@@ -102,12 +119,33 @@ namespace TP2_2383152
 
                             switch (choixLettre)
                             {
-                                case 'N': //Distribution Normale
+                                case 'N': //Statistique de la distribution Normale
 
-                                    break;
+                                    if (!File.Exists("DistributionNormale.csv"))
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine("Le fichier n'existe pas.");
+                                        Console.WriteLine();
+                                    }
+                                    else
+                                    {
+                                        distributionNormale.AfficherStatistiques();                                       
+                                    }
+                                        
+                                        break;
 
-                                case 'B': //Distribution Binomiale
+                                case 'B': //Statistique de la distribution Binomiale
 
+                                    if (!File.Exists("DistributionBinomiale.csv"))
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine("Le fichier n'existe pas.");
+                                        Console.WriteLine();
+                                    }
+                                    else
+                                    {
+                                        distributionBinomiale.AfficherStatistiques();                                 
+                                    }
                                     break;
                             }
                         }
@@ -117,7 +155,8 @@ namespace TP2_2383152
 
                         while (choixLettre != 'M')
                         {
-                            Console.WriteLine("Génération de l'échantillion");
+                            Console.WriteLine();
+                            Console.WriteLine("Comparaisons des moyenne");
                             Console.WriteLine("****************************");
                             Console.WriteLine("N- Distribution Normale");
                             Console.WriteLine("B- Distribution Binomiale");
@@ -129,12 +168,33 @@ namespace TP2_2383152
 
                             switch (choixLettre)
                             {
-                                case 'N': //Distribution Normale
-                                    Console.WriteLine();
+                                case 'N': //Statistique de la distribution Normale
+
+                                    if (!File.Exists("DistributionNormale.csv"))
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine("Le fichier n'existe pas.");
+                                        Console.WriteLine();
+                                    }
+                                    else
+                                    {
+                                        distributionNormale.AfficherComparaisonsMoyennes();
+                                    }
+
                                     break;
 
-                                case 'B': //Distribution Binomiale
+                                case 'B': //Statistique de la distribution Binomiale
 
+                                    if (!File.Exists("DistributionBinomiale.csv"))
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine("Le fichier n'existe pas.");
+                                        Console.WriteLine();
+                                    }
+                                    else
+                                    {
+                                        distributionBinomiale.AfficherComparaisonsMoyennes();
+                                    }
                                     break;
                             }
                         }
@@ -142,7 +202,12 @@ namespace TP2_2383152
                         break;
 
                     case 4:
-                        //ffectue la sauvegarde des différentes distributions dans des fichiers et affiche les noms des fichiers sauvegardés avant de fermer le programme.
+
+                        Console.WriteLine("Fichier sauvegarder: ");
+                        foreach(string nom in fichiersSauvegarder)
+                        {
+                            Console.WriteLine(nom);
+                        }
                         
                         break;
                 }
