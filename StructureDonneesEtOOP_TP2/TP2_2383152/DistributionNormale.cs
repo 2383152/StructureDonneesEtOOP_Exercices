@@ -8,13 +8,15 @@ namespace TP2_2383152
 {
     internal class DistributionNormale : Distribution
     {
-        private int TailleEchantillion {  get; set; }
+        private int TailleEchantillon {  get; set; }
         private double MoyenneTheorique { get; set; }
         private double EcartType { get; set; }
 
-        public DistributionNormale(int tailleEchantillion, double moyenneTheorique, double ecartType)
+        private static Random random = new Random();
+
+        public DistributionNormale(int tailleEchantillon, double moyenneTheorique, double ecartType)
         {
-            TailleEchantillion = tailleEchantillion;
+            TailleEchantillon = tailleEchantillon;
             MoyenneTheorique = moyenneTheorique;
             EcartType = ecartType;
         }
@@ -22,10 +24,9 @@ namespace TP2_2383152
         public override void CalculerDistribution()
         {
             //Formule Box-Muller
-            Random random = new Random();
             echantillon = new List<double>();
 
-            for (int i = 0; i < TailleEchantillion; i++)
+            for (int i = 0; i < TailleEchantillon; i++)
             {
                 double u1 = random.NextDouble();
                 double u2 = random.NextDouble();

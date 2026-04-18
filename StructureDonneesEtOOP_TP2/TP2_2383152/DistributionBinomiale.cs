@@ -8,29 +8,30 @@ namespace TP2_2383152
 {
     internal class DistributionBinomiale : Distribution
     {
-        private int T { get; set; }
-        private double n { get; set; }
-        private double p { get; set; }
+        private int TailleEchantillon { get; set; }
+        private int NbTotalEssaie { get; set; }
+        private double ProbabiliteSucces { get; set; }
 
-        public DistributionBinomiale(int tailleEchantillion, double nbTotalEssais, double probabiliteSucces)
+        private static Random random = new Random();
+
+        public DistributionBinomiale(int tailleEchantillon, int nbTotalEssais, double probabiliteSucces)
         {
-            T = tailleEchantillion;
-            this.n = nbTotalEssais;
-            this.p = probabiliteSucces;
+            TailleEchantillon = tailleEchantillon;
+            this.NbTotalEssaie = nbTotalEssais;
+            this.ProbabiliteSucces = probabiliteSucces;
         }
         public override void CalculerDistribution()
         {
-            Random random = new Random();
             echantillon = new List<double>();
 
-            for (int i = 0; i < T; i++)
+            for (int i = 0; i < TailleEchantillon; i++)
             {
                 int succes = 0;
 
-                for (int j = 0; j < n; j++)
+                for (int j = 0; j < NbTotalEssaie; j++)
                 {
                     double u = random.NextDouble();
-                    if (u < p)
+                    if (u < ProbabiliteSucces)
                         succes++;
                 }
 
@@ -40,14 +41,14 @@ namespace TP2_2383152
 
         public override double CalculerMoyenneTheorique()
         {
-            double moyenne = n * p;
+            double moyenne = TailleEchantillon * ProbabiliteSucces;
 
             return moyenne;
         }
 
         public override double CalculerVarianceTheorique()
         {
-            double variance = echantillon.Count * p * (p - 1);
+            double variance = TailleEchantillon * ProbabiliteSucces * (1 - ProbabiliteSucces);
 
             return variance;
         }

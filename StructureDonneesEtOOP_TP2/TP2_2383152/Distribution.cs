@@ -16,65 +16,93 @@ namespace TP2_2383152
 
         public abstract double CalculerVarianceTheorique();
 
-        public double CalculerCoteZ()
-        {
-            double moyenneEmp = CalculerMoyenneEmpirique();
-            double moyenneTheo = CalculerMoyenneTheorique();
-            double varianceTheo = CalculerVarianceTheorique();
-
-
-            double erreurStandard = Math.Sqrt(varianceTheo / echantillon.Count);
-
-            double coteZ = (moyenneEmp - moyenneTheo) / erreurStandard;
-
-            return coteZ;
-        }
-
-
         public double CalculerMoyenneEmpirique()
         {
-            double sommeValeurs = 0;
-
-            foreach (double valeur in echantillon)
+            if (echantillon.Count != 0)
             {
-                sommeValeurs += valeur;
+                double sommeValeurs = 0;
+
+                foreach (double valeur in echantillon)
+                {
+                    sommeValeurs += valeur;
+                }
+
+                double moyenne = sommeValeurs / echantillon.Count;
+
+                return moyenne;
             }
+            else
+            {
+                Console.WriteLine("Impossible de diviser par 0");
 
-            double moyenne = sommeValeurs / echantillon.Count;
-
-            return moyenne;
+                return 0;
+            }
+            
         }
 
-        public double VarianceEmpirique()
+        public double CalculerVarianceEmpirique()
         {
-            double sommeEcartType = 0;
-
-            double moyenne = CalculerMoyenneEmpirique();
-
-            foreach (double valeur in echantillon)
+            if (echantillon.Count != 1)
             {
-                sommeEcartType += (valeur - moyenne) * (valeur - moyenne);
+                double sommeEcartType = 0;
+
+                double moyenne = CalculerMoyenneEmpirique();
+
+                foreach (double valeur in echantillon)
+                {
+                    sommeEcartType += (valeur - moyenne) * (valeur - moyenne);
+                }
+
+                double variance = sommeEcartType / (echantillon.Count - 1);
+
+                return variance;
             }
+            else
+            {
+                Console.WriteLine("Impossible de diviser par 0");
 
-            double variance = sommeEcartType / (echantillon.Count - 1);
-
-            return variance;
+                return 0;
+            }
+            
         }
 
         public double CalculerEcartTypeEmpirique()
         {
-            double variance = VarianceEmpirique();
+            double variance = CalculerVarianceEmpirique();
 
             double ecartType = Math.Sqrt(variance);
 
             return ecartType;
         }
 
+        public double CalculerCoteZ()
+        {
+            if (echantillon.Count != 0)
+            {
+                double moyenneEmp = CalculerMoyenneEmpirique();
+                double moyenneTheo = CalculerMoyenneTheorique();
+                double varianceTheo = CalculerVarianceTheorique();
+
+
+                double erreurStandard = Math.Sqrt(varianceTheo / echantillon.Count);
+
+                double coteZ = (moyenneEmp - moyenneTheo) / erreurStandard;
+
+                return coteZ;
+            }
+            else
+            {
+                Console.WriteLine("Impossible de diviser par 0");
+
+                return 0;
+            }
+        }
+
         public void AfficherStatistiques()
         {
             Console.WriteLine();
             Console.WriteLine($"Moyenne empirique: {CalculerMoyenneEmpirique()}");
-            Console.WriteLine($"Variance empirique: {VarianceEmpirique()}");
+            Console.WriteLine($"Variance empirique: {CalculerVarianceEmpirique()}");
             Console.WriteLine($"Écart-Type empirique: {CalculerEcartTypeEmpirique()}");
             Console.WriteLine();
         }
@@ -86,10 +114,16 @@ namespace TP2_2383152
             Console.WriteLine($"Moyenne empirique: {CalculerMoyenneEmpirique()}");
             Console.WriteLine($"Cote Z: {CalculerCoteZ()}");
             Console.WriteLine();
+
+            if (Math.Abs(CalculerCoteZ()) < 2)
+                Console.WriteLine("Les moyennes sont proches.");
+            else
+                Console.WriteLine("Les moyennes sont significativement différentes.");
+
+            Console.WriteLine();
         }
 
-
-        //Affiche la liste créer
+        //Affiche la liste créer de l'échantillon
         public void AfficherEchantillon()
         {
             Console.WriteLine();
@@ -114,13 +148,12 @@ namespace TP2_2383152
             {
                 foreach (double donnees in echantillon)
                 {
-                    fichier.Write(donnees + ";");                  
+                    fichier.WriteLine(donnees);                  
                 }
 
                 Console.WriteLine("Fichier sauvegardé en mémoire.");
                 Console.WriteLine();
             }
         }
-
     }
 }

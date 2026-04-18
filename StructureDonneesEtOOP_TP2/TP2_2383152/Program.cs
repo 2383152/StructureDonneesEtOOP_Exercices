@@ -7,17 +7,20 @@ namespace TP2_2383152
     {
         static void Main(string[] args)
         {
-
             int choixNombre = -1;
             char choixLettre = ' ';
+            choixLettre = char.ToUpper(choixLettre);
 
             string nomFichier = " ";
             List<string> fichiersSauvegarder = new List<string>();
-            Distribution distributionNormale = new DistributionNormale(-1, -1, -1 );
-            Distribution distributionBinomiale = new DistributionBinomiale(-1, -1, -1);
+
+            Distribution distributionNormale = null;
+            Distribution distributionBinomiale = null;
 
             while (choixNombre != 4)
             {
+                choixNombre = -1; 
+
                 Console.WriteLine();
                 Console.WriteLine("Simulateur de Distributions Statistiques!");
                 Console.WriteLine("*****************************************");
@@ -33,6 +36,8 @@ namespace TP2_2383152
                 switch (choixNombre)
                 {
                     case 1: //Générer un échantillion
+
+                        choixLettre = ' ';
 
                         while (choixLettre != 'M')
                         {
@@ -81,7 +86,7 @@ namespace TP2_2383152
                                     estValeurValide = int.TryParse(Console.ReadLine(), out tailleEchantillion);
 
                                     Console.Write("Donner le nombre total d'essais: ");
-                                    estValeurValide = double.TryParse(Console.ReadLine(), out double nbTotalEssais);
+                                    estValeurValide = int.TryParse(Console.ReadLine(), out int nbTotalEssais);
 
                                     Console.Write("Donner la probabilité de succès: ");
                                     estValeurValide = double.TryParse(Console.ReadLine(), out double probabiliteSucces);
@@ -103,6 +108,8 @@ namespace TP2_2383152
                         break;
 
                     case 2: //Afficher les statistiques
+
+                        choixLettre = ' ';
 
                         while (choixLettre != 'M')
                         {
@@ -152,6 +159,8 @@ namespace TP2_2383152
                         break;
 
                     case 3: //Comparer la moyenne théorique et la moyenne empirique
+
+                        choixLettre = ' ';
 
                         while (choixLettre != 'M')
                         {
