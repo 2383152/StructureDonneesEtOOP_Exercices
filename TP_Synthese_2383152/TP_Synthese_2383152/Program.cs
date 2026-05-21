@@ -47,7 +47,7 @@
                             
                         }
 
-                        if (idObservateur != "M") //a retravaillé
+                        while (idObservateur != "M" && choix != "Q") //a retravaillé 
                         {
                             Utilisateur observateur = new Observateur(idObservateur);
 
@@ -64,10 +64,14 @@
                             choix = Console.ReadLine().ToUpper();
                             Console.WriteLine();
 
-                            while (choix != "Q")
+                           
                             switch(choix)
                             {
                                 case "RM":
+                                    Systeme systemeMission = new Systeme();
+
+                                    systemeMission.ChargerDonnees("Donnees.csv");
+
                                     break;
 
                                 case "LM":
@@ -80,7 +84,8 @@
                                     break;
 
                                 default:
-                                    break;
+                                        Console.WriteLine("Veuillez entrer un choix valide");
+                                        break;
                             }
                         }
                             break;
