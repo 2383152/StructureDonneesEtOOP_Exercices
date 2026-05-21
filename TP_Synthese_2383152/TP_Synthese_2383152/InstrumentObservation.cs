@@ -8,5 +8,12 @@ namespace TP_Synthese_2383152
 {
     internal class InstrumentObservation : Instrument
     {
+        private string ChampVision {  get; set; }
+        private string LongeureOnde {  get; set; }
+
+        public override void AfficherInfo()
+        {
+
+        }
     }
 }

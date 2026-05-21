@@ -8,5 +8,11 @@ namespace TP_Synthese_2383152
 {
     internal class InstrumentAnalyse : Instrument
     {
+        private string TypeSignal {  get; set; }
+
+        public override void AfficherInfo()
+        {
+
+        }
     }
 }

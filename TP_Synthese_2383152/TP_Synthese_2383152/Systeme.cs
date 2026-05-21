@@ -8,5 +8,19 @@ namespace TP_Synthese_2383152
 {
     internal class Systeme
     {
+        public void ChargerDonnees()
+        {
+
+        }
+
+        public void SauvegarderDonnees()
+        {
+
+        }
+
+        public void ConnexionUtilisateur(string id)
+        {
+
+        }
     }
 }
