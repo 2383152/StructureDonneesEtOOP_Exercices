@@ -35,7 +35,7 @@
 
                         Utilisateur observateur = new Observateur();
                         
-                        if (numeroIdentification exists)
+                        //if (numeroIdentification exists)
 
 
                         break;
