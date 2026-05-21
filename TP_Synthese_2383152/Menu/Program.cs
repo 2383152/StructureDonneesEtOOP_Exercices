@@ -64,7 +64,7 @@ namespace Menu
             Console.WriteLine();
             Console.WriteLine("Résumé profil");
             Console.WriteLine();
-            Console.WriteLine("        NTotal des missions affectées: ");
+            Console.WriteLine("        Total des missions affectées: ");
             Console.WriteLine("        Catégorie Planète: ");
             Console.WriteLine("        Catégorie Étoile: ");
             Console.WriteLine("        Catégorie Satélite: ");

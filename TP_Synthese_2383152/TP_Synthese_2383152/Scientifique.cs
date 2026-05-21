@@ -12,7 +12,23 @@ namespace TP_Synthese_2383152
 
         public override void AfficherInfo()
         {
-            
+            Console.WriteLine("-------------------------------------------");
+            Console.WriteLine();
+            Console.WriteLine("Profil Scientifique: ");
+            Console.WriteLine("        Numero matricule: ");
+            Console.WriteLine("        Nom: ");
+            Console.WriteLine("        Date de naissance");
+            Console.WriteLine();
+
+            Console.WriteLine("-------------------------------------------");
+            Console.WriteLine();
+            Console.WriteLine("Résumé profil");
+            Console.WriteLine();
+            Console.WriteLine("        Total des missions affectées: ");
+            Console.WriteLine("        Catégorie Planète: ");
+            Console.WriteLine("        Catégorie Étoile: ");
+            Console.WriteLine("        Catégorie Satélite: ");
+            Console.WriteLine();
         }
 
         public void AjouterMission(Mission mission)

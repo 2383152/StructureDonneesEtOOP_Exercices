@@ -12,7 +12,13 @@ namespace TP_Synthese_2383152
 
         public override void AfficherInfo()
         {
-
+            Console.WriteLine("-------------------------------------------");
+            Console.WriteLine();
+            Console.WriteLine("Profil Observateur: ");
+            Console.WriteLine("        Numero d'idendification: ");
+            Console.WriteLine("        Nom: ");
+            Console.WriteLine("        Date de naissance");
+            Console.WriteLine();
         }
 
     }

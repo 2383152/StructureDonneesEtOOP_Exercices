@@ -13,6 +13,14 @@ namespace TP_Synthese_2383152
         private DateTime DateNaissance { get; set; }
         private string Adresse { get; set; }
 
+        public Utilisateur (string nom, string prenom, DateTime dateNaissance, string adresse)
+        {
+            Nom = nom;
+            Prenom = prenom;
+            DateNaissance = dateNaissance;
+            Adresse = adresse;
+        }
+
         public virtual void AfficherInfo() { }
         
     }

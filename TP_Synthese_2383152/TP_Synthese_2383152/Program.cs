@@ -24,6 +24,20 @@
                 switch (choix)
                 {
                     case "O":
+
+                        Console.WriteLine("-------------------------------------------");
+                        Console.WriteLine();
+                        Console.WriteLine("Option Observateur: ");
+                        Console.WriteLine();
+                        Console.Write("           Veulliez fournir le numéro d'identification: ");
+                        string numeroIdentification = Console.ReadLine();
+                        Console.WriteLine();
+
+                        Utilisateur observateur = new Observateur();
+                        
+                        if (numeroIdentification exists)
+
+
                         break;
 
                     case "S":
