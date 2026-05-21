@@ -8,18 +8,35 @@ namespace TP_Synthese_2383152
 {
     internal class Systeme
     {
-        protected List<double> echantillon;
+        protected List<double> liste;
+        public string[,] tableau { get; set; }
 
-        public void ChargerDonnees()
+        public void ChargerDonnees(string nomFichier)
         {
+            string[] lignes = File.ReadAllLines(nomFichier);
 
+            int nombreLignes = lignes.Length;
+            int nombreColonne = lignes[0].Split(';').Length;
+
+            tableau = new string[nombreLignes, nombreColonne];
+
+
+            for (int i = 0; i < nombreLignes; i++)
+            {
+                string[] element = lignes[i].Split(";");
+
+                for (int j = 0; j < nombreColonne; j++)
+                {
+                    tableau[i, j] = (element[j]);
+                }
+            }
         }
 
-        public void SauvegarderDonnees(string nomFichier)
+        public void SauvegarderDonnees(string nomFichier) //a retravailler
         {
             using (StreamWriter fichier = new StreamWriter(nomFichier))
             {
-                foreach (double donnees in echantillon)
+                foreach (double donnees in liste)
                 {
                     fichier.WriteLine(donnees);
                 }
@@ -29,9 +46,20 @@ namespace TP_Synthese_2383152
             }
         }
 
-        public void ConnexionUtilisateur(string id)
+        public bool ConnexionUtilisateur(string id)
         {
+            for (int i = 0; i < tableau.Length; i++)
+            {
+                for (int j = 0; j < 1; j++)
+                {
+                    if (tableau[i, j] == id)
+                    {
+                        return true;
+                    }
+                }
+            }
 
+            return false;
         }
     }
 }
