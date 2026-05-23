@@ -33,11 +33,11 @@ namespace TP_Synthese_2383152
             }
         }
 
-        public void SauvegarderDonnees(string nomFichier) //a retravailler
+        public void SauvegarderDonnees(List<string> listeDonees, string nomFichier) //a retravailler
         {
             using (StreamWriter fichier = new StreamWriter(nomFichier))
             {
-                foreach (double donnees in liste)
+                foreach(string donnees in listeDonees)
                 {
                     fichier.WriteLine(donnees);
                 }
@@ -55,7 +55,7 @@ namespace TP_Synthese_2383152
             {
                 for (int j = 0; j < tableau.GetLength(1); j++)
                 {
-                    if (tableau[i, j] == id)
+                    if (tableau[i, 0] == id)
                     {
                         //return true;
                         //if (tableau[i, tableau.GetLength(1)].Contains(";;"))
@@ -63,7 +63,11 @@ namespace TP_Synthese_2383152
 
                         //else if (tableau[i, tableau.GetLength(1)].Contains(";;;;"))
                             //return "observateur";                     
-                    }                       
+                    }     
+                    else if(tableau[i, j] == id)
+                    {
+                        return "scientifique";
+                    }
                 }
             }
             //return false;

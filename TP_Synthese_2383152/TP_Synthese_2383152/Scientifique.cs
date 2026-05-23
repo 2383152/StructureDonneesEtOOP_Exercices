@@ -23,7 +23,7 @@ namespace TP_Synthese_2383152
             {
                 for (int j = 0; j < donneesObservateur.GetLength(1); j++)
                 {
-                    if (donneesObservateur[i, j] == idObservateur)
+                    if (donneesObservateur[i, 3] == idObservateur)
                     {
                         numeroIdentification = donneesObservateur[i, 0];
                         Nom = donneesObservateur[i, 1];
@@ -37,7 +37,7 @@ namespace TP_Synthese_2383152
             }
         }
 
-        public override void AfficherInfo()
+        public void AfficherInfo()
         {
             Console.WriteLine("Information sur le scientifique recherché: ");
             Console.WriteLine("Numéro de matricule: " + Matricule);
@@ -45,7 +45,10 @@ namespace TP_Synthese_2383152
             Console.WriteLine("Date de naissance: " + DateNaissance);
             Console.WriteLine("Nom des missions affectés: " + Matricule);
 
-            /*
+        }
+
+        public override void AfficherProfil()
+        {
             Console.WriteLine("-------------------------------------------");
             Console.WriteLine();
             Console.WriteLine("Profil Scientifique: ");
@@ -62,8 +65,51 @@ namespace TP_Synthese_2383152
             Console.WriteLine("        Catégorie Planète: ");
             Console.WriteLine("        Catégorie Étoile: ");
             Console.WriteLine("        Catégorie Satélite: ");
-            Console.WriteLine();
-            */
+        }
+
+        public void AjouterObservateur(/*Observateur observateur*/)
+        {
+            List<string> doneesObservateur = new List<string>();
+            Console.WriteLine("Inscrir les informations suivantes sur l'observateur:");
+
+            Console.Write("Numero identification: ");
+            doneesObservateur.Add(Console.ReadLine() + ";");
+
+            Console.Write("Nom complet: ");
+            doneesObservateur.Add(Console.ReadLine() + ";");
+
+            Console.Write("Date de naissance (AAAA-MM-JJ): ");
+            doneesObservateur.Add(Console.ReadLine() + ";;;;");
+
+            systeme.SauvegarderDonnees(doneesObservateur, "Donnees.csv");
+
+            systeme.ChargerDonnees("Donnees.csv");
+
+        }
+
+        public void AjouterScientifique(/*Scientifique scientifique*/)
+        {
+            List<string> doneesObservateur = new List<string>();
+            Console.WriteLine("Inscrir les informations suivantes sur l'observateur:");
+
+            Console.Write("Numero identification: ");
+            doneesObservateur.Add(Console.ReadLine() + ";");
+
+            Console.Write("Nom complet: ");
+            doneesObservateur.Add(Console.ReadLine() + ";");
+
+            Console.Write("Date de naissance (AAAA-MM-JJ): ");
+            doneesObservateur.Add(Console.ReadLine() + ";");
+
+            Console.Write("Matricule: ");
+            doneesObservateur.Add(Console.ReadLine() + ";");
+
+            Console.Write("Fonction: ");
+            doneesObservateur.Add(Console.ReadLine() + ";;");
+
+            systeme.SauvegarderDonnees(doneesObservateur, "Donnees.csv");
+
+            systeme.ChargerDonnees("Donnees.csv");
         }
 
         public void AjouterMission(Mission mission)
@@ -86,14 +132,8 @@ namespace TP_Synthese_2383152
 
         }
 
-        public void AjouterObservateur(Observateur observateur)
-        {
+        
 
-        }
-
-        public void AjouterScientifique(Scientifique scientifique)
-        {
-
-        }
+        
     }
 }

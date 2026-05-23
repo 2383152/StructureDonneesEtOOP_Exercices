@@ -15,7 +15,7 @@ namespace TP_Synthese_2383152
 
 
 
-        public virtual void AfficherInfo() { }
+        public virtual void AfficherProfil() { }
         
     }
 }

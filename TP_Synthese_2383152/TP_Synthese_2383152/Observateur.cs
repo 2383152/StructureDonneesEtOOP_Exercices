@@ -8,13 +8,15 @@ namespace TP_Synthese_2383152
 {
     internal class Observateur : Utilisateur
     {
-        Systeme systeme = new Systeme();
+        Systeme systemeDonnees = new Systeme();
+        Systeme systemeInstrument = new Systeme();
 
         public Observateur (string idObservateur)
         {            
-            systeme.ChargerDonnees("Donnees.csv");
+            systemeDonnees.ChargerDonnees("Donnees.csv");
+            systemeInstrument.ChargerDonnees("InstrumentMesure.csv");
 
-            string[,] donneesObservateur = systeme.tableau;
+            string[,] donneesObservateur = systemeDonnees.tableau;
 
             for (int i = 0; i < donneesObservateur.GetLength(0); i++)
             {
@@ -32,7 +34,7 @@ namespace TP_Synthese_2383152
             }
         }
 
-        public override void AfficherInfo()
+        public override void AfficherProfil()
         {
             Console.WriteLine("-------------------------------------------");
             Console.WriteLine();
@@ -46,7 +48,7 @@ namespace TP_Synthese_2383152
 
         public bool RechercherDansFichier(string entree)
         {
-            string[,] donneesMissions = systeme.tableau;
+            string[,] donneesMissions = systemeDonnees.tableau;
 
             for (int i = 0; i < donneesMissions.GetLength(0); i++)
             {
@@ -66,7 +68,7 @@ namespace TP_Synthese_2383152
 
         public void AfficherListeMission() //a retravaillé
         {
-            string[,] donneesFichier = systeme.tableau;
+            string[,] donneesFichier = systemeDonnees.tableau;
 
             Dictionary<int, List<string>> missions = new Dictionary<int, List<string>>();
 
@@ -106,14 +108,14 @@ namespace TP_Synthese_2383152
 
         public void AfficherListeScientifique() //a retravaillé
         {
-            string[,] donneesFichier = systeme.tableau;
+            string[,] donneesFichier = systemeDonnees.tableau;
 
             Dictionary<int, List<string>> scientifiques = new Dictionary<int, List<string>>();
 
 
             for (int i = 0; i < donneesFichier.GetLength(0); i++)
             {
-                if (donneesFichier[i, 0].Contains(";;"))
+                //if (donneesFichier[i, donneesFichier.GetLength(1) - 1].Contains(";;;"))
                 {
                     List<string> donneesScientifique = new List<string>();
 
