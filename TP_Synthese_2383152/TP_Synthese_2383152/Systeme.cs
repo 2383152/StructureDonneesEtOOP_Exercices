@@ -9,8 +9,9 @@ namespace TP_Synthese_2383152
     internal class Systeme
     {
         protected List<double> liste;
-        public string[,] tableau { get; set; }
+        public string[,] tableau { get; private set; }
 
+        //Charge les données du fichier dans un tableau contenu dans la classe
         public void ChargerDonnees(string nomFichier)
         {
             string[] lignes = File.ReadAllLines(nomFichier);
@@ -46,20 +47,27 @@ namespace TP_Synthese_2383152
             }
         }
 
-        public bool ConnexionUtilisateur(string id)
+        public string ConnexionUtilisateur(string id)
         {
-            for (int i = 0; i < tableau.Length; i++)
+            ChargerDonnees("Donnees.csv");
+
+            for (int i = 0; i < tableau.GetLength(0); i++)
             {
-                for (int j = 0; j < 1; j++)
+                for (int j = 0; j < tableau.GetLength(1); j++)
                 {
                     if (tableau[i, j] == id)
                     {
-                        return true;
-                    }
+                        //return true;
+                        //if (tableau[i, tableau.GetLength(1)].Contains(";;"))
+                            return "observateur";
+
+                        //else if (tableau[i, tableau.GetLength(1)].Contains(";;;;"))
+                            //return "observateur";                     
+                    }                       
                 }
             }
-
-            return false;
+            //return false;
+            return "invalide";
         }
     }
 }
