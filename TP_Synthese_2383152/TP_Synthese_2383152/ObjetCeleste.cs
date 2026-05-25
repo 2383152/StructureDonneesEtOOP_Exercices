@@ -8,9 +8,17 @@ namespace TP_Synthese_2383152
 {
     internal abstract class ObjetCeleste
     {
-        private string MatriculeScientifique {  get; set; }
-        private string NumReferenceMission { get; set; }
-        private string Type {  get; set; }
+        protected string MatriculeScientifique { get; set; }
+        protected string NumReferenceMission { get; set; }
+        protected string _Type { get; set; }
 
+        public void CalculerNombreMission()
+        {
+
+        }
+
+        public abstract void CalculerForceGravitationnelle();
+
+        public abstract void CalculerVitesseOrbitale();
     }
 }

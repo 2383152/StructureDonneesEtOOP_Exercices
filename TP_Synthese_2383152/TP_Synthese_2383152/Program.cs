@@ -41,7 +41,7 @@ namespace TP_Synthese_2383152
                         
                         while (systemeObservateur.ConnexionUtilisateur(entree) != "observateur" && entree != "M") 
                         {
-                            Console.WriteLine("Numéro d'identification invalide veuillez réessayez ou entrer (M) pour revenir au menu principale.");
+                            Console.WriteLine("Entrée invalide veuillez réessayez ou entrer (M) pour revenir au menu principale.");
                             Console.Write("           Veulliez fournir le numéro d'identification: ");
                             entree = Console.ReadLine();
                             Console.WriteLine();
@@ -81,7 +81,7 @@ namespace TP_Synthese_2383152
 
                                     while (observateur.RechercherDansFichier(entree) == false && entree != "O" && entree != "M")
                                     {
-                                             Console.WriteLine("Numéro de référence invalide veuillez réessayez ou entrer (O) pour revenir au menu observateur.");
+                                             Console.WriteLine("Entrée invalide veuillez réessayez ou entrer (O) pour revenir au menu observateur.");
                                              Console.Write("           Veulliez fournir le numéro d'identification: ");
                                              entree = Console.ReadLine();
                                              Console.WriteLine();
@@ -199,7 +199,7 @@ namespace TP_Synthese_2383152
 
                         while (systemeScientifique.ConnexionUtilisateur(entree) != "scientifique" && entree != "M")
                         {
-                            Console.WriteLine("Numéro d'identification invalide veuillez réessayez ou entrer (M) pour revenir au menu principale.");
+                            Console.WriteLine("Entrée invalide veuillez réessayez ou entrer (M) pour revenir au menu principale.");
                             Console.Write("           Veulliez fournir le numéro d'identification: ");
                             entree = Console.ReadLine();
                             Console.WriteLine();
@@ -286,18 +286,123 @@ namespace TP_Synthese_2383152
                                     break;
 
                                 case "GO":
+
+                                    while(choix != "Q")
+                                    {
+                                        Console.WriteLine("-------------------------------------------");
+                                        Console.WriteLine();
+                                        Console.WriteLine("Gestion des objets: ");
+                                        Console.WriteLine();
+                                        Console.WriteLine("              (PL) Planètes");
+                                        Console.WriteLine("              (ET) Étoiles");
+                                        Console.WriteLine("              (SA) Satélite");
+                                        Console.WriteLine();
+                                        Console.WriteLine("               (Q) Quitter");
+                                        Console.WriteLine();
+                                        Console.Write("  Votre choix: ");
+                                        choix = Console.ReadLine().ToUpper();
+
+                                        Console.WriteLine();
+
+                                        switch (choix)
+                                        {
+                                            case "PL":
+
+                                                Console.Write("           Veulliez fournir le numero de référence: ");
+                                                entree = Console.ReadLine();
+                                                Console.WriteLine();
+
+                                                while (systemeScientifique.ConnexionUtilisateur(entree) != "scientifique" && entree != "M")
+                                                {
+                                                    Console.WriteLine("Entrée invalide veuillez réessayez ou entrer (M) pour revenir au menu principale.");
+                                                    Console.Write("           Veulliez fournir le numéro d'identification: ");
+                                                    entree = Console.ReadLine();
+                                                    Console.WriteLine();
+
+                                                }
+                                                break;
+
+                                            case "ET":
+
+                                                Console.Write("           Veulliez fournir le numero de référence: ");
+                                                entree = Console.ReadLine();
+                                                Console.WriteLine();
+
+                                                while (systemeScientifique.ConnexionUtilisateur(entree) != "scientifique" && entree != "M")
+                                                {
+                                                    Console.WriteLine("Entrée invalide veuillez réessayez ou entrer (M) pour revenir au menu principale.");
+                                                    Console.Write("           Veulliez fournir le numéro d'identification: ");
+                                                    entree = Console.ReadLine();
+                                                    Console.WriteLine();
+
+                                                }
+                                                break;
+
+                                            case "SA":
+
+                                                Console.Write("           Veulliez fournir le numero de référence: ");
+                                                entree = Console.ReadLine();
+                                                Console.WriteLine();
+
+                                                while (systemeScientifique.ConnexionUtilisateur(entree) != "scientifique" && entree != "M")
+                                                {
+                                                    Console.WriteLine("Entrée invalide veuillez réessayez ou entrer (M) pour revenir au menu principale.");
+                                                    Console.Write("           Veulliez fournir le numéro d'identification: ");
+                                                    entree = Console.ReadLine();
+                                                    Console.WriteLine();
+
+                                                }
+                                                break;
+
+                                            default:
+
+                                                Console.WriteLine("Veuillez entrer un choix valide");
+                                                Console.WriteLine();
+
+                                                break;
+                                        }
+                                    }                             
+
                                     break;
 
                                 case "GM":
+
+                                    Console.WriteLine("-------------------------------------------");
+                                    Console.WriteLine();
+                                    Console.WriteLine("Gestion des missions: ");
+                                    Console.WriteLine();
+                                    Console.WriteLine("              (AM) Ajouter une mission");
+                                    Console.WriteLine("              (SM) Supprimé une mission");
+                                    Console.WriteLine();
+                                    Console.WriteLine("               (Q) Quitter");
+                                    Console.WriteLine();
+                                    Console.Write("  Votre choix: ");
+                                    choix = Console.ReadLine().ToUpper();
+                                    Console.WriteLine();
+
                                     break;
 
                                 case "GI":
 
-                                    
+                                    Console.WriteLine("-------------------------------------------");
+                                    Console.WriteLine();
+                                    Console.WriteLine("Gestion des instruments de mesures: ");
+                                    Console.WriteLine();
+                                    Console.WriteLine("              (IO) Instruments d'observation");
+                                    Console.WriteLine("              (IA) Instruments d'analyse");
+                                    Console.WriteLine();
+                                    Console.WriteLine("               (Q) Quitter");
+                                    Console.WriteLine();
+                                    Console.Write("  Votre choix: ");
+                                    choix = Console.ReadLine().ToUpper();
+                                    Console.WriteLine();
+
                                     break;
 
                                 case "SM":
                                    
+
+
                                     break;
 
                                 default:
