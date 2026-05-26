@@ -11,13 +11,21 @@ namespace TP_Synthese_2383152
         private string Matricule {  get; set; }
         private string Fonction {  get; set; }
 
-        Systeme systeme = new Systeme();
+        Systeme systemeDonnees = new Systeme();
+        Systeme systemeObjetMission = new Systeme();
+        Systeme systemeInstrument = new Systeme();
 
         public Scientifique(string idObservateur)
         {
-            systeme.ChargerDonnees("Donnees.csv");
+            systemeDonnees.ChargerDonnees("Donnees.csv");
+            systemeObjetMission.ChargerDonnees("ObjetMission.csv");
+            systemeInstrument.ChargerDonnees("InstrumentMesures.csv");
 
-            string[,] donneesObservateur = systeme.tableau;
+            string[,] donneesObservateur = systemeDonnees.tableau;
+
+            string[,] donneesMisison = systemeObjetMission.tableau;
+
+            string[,] donneesInstrument = systemeInstrument.tableau;
 
             for (int i = 0; i < donneesObservateur.GetLength(0); i++)
             {
@@ -67,7 +75,7 @@ namespace TP_Synthese_2383152
             Console.WriteLine("        Catégorie Satélite: ");
         }
 
-        public void AjouterObservateur(/*Observateur observateur*/)
+        public void AjouterObservateur()
         {
             List<string> doneesObservateur = new List<string>();
             Console.WriteLine("Inscrir les informations suivantes sur l'observateur:");
@@ -81,13 +89,13 @@ namespace TP_Synthese_2383152
             Console.Write("Date de naissance (AAAA-MM-JJ): ");
             doneesObservateur.Add(Console.ReadLine() + ";;;;");
 
-            systeme.SauvegarderDonnees(doneesObservateur, "Donnees.csv");
+            systemeDonnees.SauvegarderDonnees(doneesObservateur, "Donnees.csv");
 
-            systeme.ChargerDonnees("Donnees.csv");
+            systemeDonnees.ChargerDonnees("Donnees.csv");
 
         }
 
-        public void AjouterScientifique(/*Scientifique scientifique*/)
+        public void AjouterScientifique()
         {
             List<string> doneesObservateur = new List<string>();
             Console.WriteLine("Inscrir les informations suivantes sur l'observateur:");
@@ -107,29 +115,108 @@ namespace TP_Synthese_2383152
             Console.Write("Fonction: ");
             doneesObservateur.Add(Console.ReadLine() + ";;");
 
-            systeme.SauvegarderDonnees(doneesObservateur, "Donnees.csv");
+            systemeDonnees.SauvegarderDonnees(doneesObservateur, "Donnees.csv");
 
-            systeme.ChargerDonnees("Donnees.csv");
+            systemeDonnees.ChargerDonnees("Donnees.csv");
         }
 
-        public void AjouterMission(Mission mission)
+        public void AjouterMission()
         {
+            List<string> donneesMisison = new List<string>();
+            Console.WriteLine("Inscrir les informations suivantes sur la mission:");
 
+            Console.Write("Nom de la mission: ");
+            donneesMisison.Add(Console.ReadLine() + ";");
+
+            Console.Write("Numéro de référence: ");
+            donneesMisison.Add(Console.ReadLine() + ";");
+
+            Console.Write("Numéro de matricule scientifique: ");
+            donneesMisison.Add(Console.ReadLine() + ";");
+
+            Console.Write("Catégorie: ");
+            donneesMisison.Add(Console.ReadLine() + ";");
+
+            Console.Write("Vaiseau spatial utilisé: ");
+            donneesMisison.Add(Console.ReadLine() + ";");
+
+            Console.Write("Durée estimé: ");
+            donneesMisison.Add(Console.ReadLine() + ";");
+
+            Console.Write("Date de lancement (AAAA-MM-JJ): ");
+            donneesMisison.Add(Console.ReadLine() + ";");
+
+            systemeObjetMission.SauvegarderDonnees(donneesMisison, "ObjetMission.csv");
+
+            systemeObjetMission.ChargerDonnees("ObjetMission.csv");
         }
 
-        public void SupprimerMission(Mission mission)
+        public void SupprimerMission()
         {
+
 
         }
 
         public void AjouterInstrument()
         {
+            List<string> donneesInstrument = new List<string>();
+            Console.WriteLine("Inscrir les informations suivantes sur la mission:");
 
+            Console.Write("Numero de référence de la mission: ");
+            donneesInstrument.Add(Console.ReadLine() + ";");
+
+            Console.Write("Nom de l'instrument: ");
+            donneesInstrument.Add(Console.ReadLine() + ";");
+
+            Console.Write("Numéro de matricule scientifique: ");
+            donneesInstrument.Add(Console.ReadLine() + ";");
+
+            Console.Write("Catégorie: ");
+            donneesInstrument.Add(Console.ReadLine() + ";");
+
+            Console.Write("Vaiseau spatial utilisé: ");
+            donneesInstrument.Add(Console.ReadLine() + ";");
+
+            Console.Write("Durée estimé: ");
+            donneesInstrument.Add(Console.ReadLine() + ";");
+
+            Console.Write("Date de lancement (AAAA-MM-JJ): ");
+            donneesInstrument.Add(Console.ReadLine() + ";");
+
+            systemeInstrument.SauvegarderDonnees(donneesInstrument, "Donnees.csv");
+
+            systemeInstrument.ChargerDonnees("Donnees.csv");
         }
 
         public void AjouterObjetCeleste()
         {
+            List<string> donneesMisison = new List<string>();
+            Console.WriteLine("Inscrir les informations suivantes sur la mission:");
 
+            Console.Write("Nom de la mission: ");
+            donneesMisison.Add(Console.ReadLine() + ";");
+
+            Console.Write("Numéro de référence: ");
+            donneesMisison.Add(Console.ReadLine() + ";");
+
+            Console.Write("Numéro de matricule scientifique: ");
+            donneesMisison.Add(Console.ReadLine() + ";");
+
+            Console.Write("Catégorie: ");
+            donneesMisison.Add(Console.ReadLine() + ";");
+
+            Console.Write("Vaiseau spatial utilisé: ");
+            donneesMisison.Add(Console.ReadLine() + ";");
+
+            Console.Write("Durée estimé: ");
+            donneesMisison.Add(Console.ReadLine() + ";");
+
+            Console.Write("Date de lancement (AAAA-MM-JJ): ");
+            donneesMisison.Add(Console.ReadLine() + ";");
+
+            systemeObjetMission.SauvegarderDonnees(donneesMisison, "ObjetMission.csv");
+
+            systemeObjetMission.ChargerDonnees("ObjetMission.csv");
         }
 
         

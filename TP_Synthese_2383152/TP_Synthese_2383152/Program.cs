@@ -191,7 +191,7 @@ namespace TP_Synthese_2383152
 
                         Console.WriteLine("-------------------------------------------");
                         Console.WriteLine();
-                        Console.WriteLine("Option Observateur: ");
+                        Console.WriteLine("Option Scientifique: ");
                         Console.WriteLine();
                         Console.Write("           Veulliez fournir le matricule: ");
                         entree = Console.ReadLine();
@@ -308,6 +308,8 @@ namespace TP_Synthese_2383152
                                         {
                                             case "PL":
 
+
+
                                                 Console.Write("           Veulliez fournir le numero de référence: ");
                                                 entree = Console.ReadLine();
                                                 Console.WriteLine();
@@ -367,18 +369,35 @@ namespace TP_Synthese_2383152
 
                                 case "GM":
 
-                                    Console.WriteLine("-------------------------------------------");
-                                    Console.WriteLine();
-                                    Console.WriteLine("Gestion des missions: ");
-                                    Console.WriteLine();
-                                    Console.WriteLine("              (AM) Ajouter une mission");
-                                    Console.WriteLine("              (SM) Supprimé une mission");
-                                    Console.WriteLine();
-                                    Console.WriteLine("               (Q) Quitter");
-                                    Console.WriteLine();
-                                    Console.Write("  Votre choix: ");
-                                    choix = Console.ReadLine().ToUpper();
-                                    Console.WriteLine();
+                                    while(choix != "Q")
+                                    {
+                                        Console.WriteLine("-------------------------------------------");
+                                        Console.WriteLine();
+                                        Console.WriteLine("Gestion des missions: ");
+                                        Console.WriteLine();
+                                        Console.WriteLine("              (AM) Ajouter une mission");
+                                        Console.WriteLine("              (SM) Supprimé une mission");
+                                        Console.WriteLine();
+                                        Console.WriteLine("               (Q) Quitter");
+                                        Console.WriteLine();
+                                        Console.Write("  Votre choix: ");
+                                        choix = Console.ReadLine().ToUpper();
+                                        Console.WriteLine();
+
+                                        switch (choix)
+                                        {
+                                            case "AM":
+                                                scientifique.AjouterMission();
+                                                break;
+
+                                            case "SM":
+                                                scientifique.SupprimerMission();
+
+                                                break;
+                                        }
+
+                                    }
+                                    
 
                                     break;
 
